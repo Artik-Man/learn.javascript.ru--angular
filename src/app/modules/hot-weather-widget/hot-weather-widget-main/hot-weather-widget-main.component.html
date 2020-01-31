@@ -1,13 +1,14 @@
 <h1>Hot Weather Widget</h1>
-<div class="element">
-  <app-hot-weather-widget-hotel-list [hotelList]="list" (selectHotel)="select($event)"></app-hot-weather-widget-hotel-list>
-  <div class="element-right">
-    <app-hot-weather-widget-weather [hotel]="currentHotel"></app-hot-weather-widget-weather>
-    <app-hot-weather-widget-social [hotel]="currentHotel"></app-hot-weather-widget-social>
-  </div>
-  <div class="clear"></div>
+<div class="grid-box">
+  <app-hot-weather-widget-hotel-list
+    [hotelList]="list"
+    (selectHotel)="select($event)"
+  ></app-hot-weather-widget-hotel-list>
+  <app-hot-weather-widget-weather [hotel]="currentHotel"></app-hot-weather-widget-weather>
+  <app-hot-weather-widget-social [hotel]="currentHotel"></app-hot-weather-widget-social>
+
 </div>
-<div class="copy-right">
-  <p>© 2015 Hot Weather Widget. All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">
-    W3layouts </a></p>
-</div>
+<p class="copy-right">© 2015 Hot Weather Widget. All rights reserved | Design by
+  <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+</p>
+

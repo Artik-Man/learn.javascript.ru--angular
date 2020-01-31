@@ -5,8 +5,7 @@ import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-hot-weather-widget-main',
   templateUrl: './hot-weather-widget-main.component.html',
-  styleUrls: ['./hot-weather-widget-main.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./hot-weather-widget-main.component.scss']
 })
 export class HotWeatherWidgetMainComponent implements OnInit {
 

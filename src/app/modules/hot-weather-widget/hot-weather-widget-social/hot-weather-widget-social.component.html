@@ -1,15 +1,17 @@
-<div class="teddy-bear">
-  <div class="teddy-text">
+<div class="social">
+  <div class="title">
     <h4>{{currentHotel?.social_info?.title}}</h4>
-    <span class="w-line"> </span>
+    <div class="w-line"> </div>
     <img [src]="currentHotel?.social_info?.img" [alt]="currentHotel?.address" class="img-responsive">
   </div>
-  <div class="teddy-follow">
+  <div class="stats">
     <ul>
-      <li class="folw-h"><h3>{{currentHotel?.social_info?.followers}}</h3>
+      <li>
+        <h3>{{currentHotel?.social_info?.followers}}</h3>
         <p>Followers</p>
       </li>
-      <li><h3>{{currentHotel?.social_info?.following}}</h3>
+      <li>
+        <h3>{{currentHotel?.social_info?.following}}</h3>
         <p>Following</p>
       </li>
     </ul>

@@ -1,6 +1,38 @@
 import { Observable, of } from 'rxjs';
 
-export class HotWeatherWidgetApi {
+// API
+
+// Статические методы позволяют писать вместо
+//   constructor(private api: API){...}
+//   this.api.get()
+
+// конструкцию проще:
+//   API.get()
+
+// Это имеет проблему: нельзя просто взять и использовать Angular HttpClient.
+// Чтобы иметь возможность пользоваться HttpClient, нужно создать дополнительный сервис:
+
+// export let InjectorInstance: Injector;
+// @Injectable({ providedIn: 'root' })
+// export class StaticInjector {
+//   constructor(private injector: Injector) {
+//     if (!InjectorInstance) {
+//       InjectorInstance = this.injector;
+//     }
+//   }
+// }
+
+// и использовать его:
+//   class API {
+//     static get(){
+//       const httpClient = InjectorInstance.get<HttpClient>(HttpClient);
+//       ...
+//     }
+//   }
+
+// ВОПРОС: чем этот подход может быть плох?
+
+export class HotWeatherWidgetApiService {
   public static getList(): Observable<Hotel[]> {
     const data: Hotel[] = [
       {

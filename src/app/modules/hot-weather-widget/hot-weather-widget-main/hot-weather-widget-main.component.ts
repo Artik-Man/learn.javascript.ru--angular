@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Hotel, HotWeatherWidgetApi } from '../services/hot-weather-widget-api';
+import { Hotel, HotWeatherWidgetApiService } from '../services/hot-weather-widget-api';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -17,7 +17,7 @@ export class HotWeatherWidgetMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    HotWeatherWidgetApi.getList().pipe(take(1)).subscribe(response => {
+    HotWeatherWidgetApiService.getList().pipe(take(1)).subscribe(response => {
       this.list = response;
     });
   }

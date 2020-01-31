@@ -4,7 +4,7 @@ export class HotWeatherWidgetApi {
   public static getList(): Observable<Hotel[]> {
     const data: Hotel[] = [
       {
-        img: '../../../../assets/hot-weather-widget/images/hotel1.jpg',
+        img: 'assets/hot-weather-widget/images/hotel1.jpg',
         address: 'GOLDEN TULIP SHARJAH HOTEL',
         phone: 97165197777,
         weather: {
@@ -15,13 +15,13 @@ export class HotWeatherWidgetApi {
         },
         social_info: {
           title: 'Instagram',
-          img: '../../../../assets/hot-weather-widget/images/hotel1-s.jpg',
+          img: 'assets/hot-weather-widget/images/hotel1-s.jpg',
           followers: 4222,
           following: 351
         }
       },
       {
-        img: '../../../../assets/hot-weather-widget/images/hotel2.jpg',
+        img: 'assets/hot-weather-widget/images/hotel2.jpg',
         address: 'ROVE AT THE PARKS',
         phone: 971042419500,
         weather: {
@@ -32,13 +32,13 @@ export class HotWeatherWidgetApi {
         },
         social_info: {
           title: 'Instagram',
-          img: '../../../../assets/hot-weather-widget/images/hotel2-s.jpg',
+          img: 'assets/hot-weather-widget/images/hotel2-s.jpg',
           followers: 7434,
           following: 123
         }
       },
       {
-        img: '../../../../assets/hot-weather-widget/images/hotel3.jpg',
+        img: 'assets/hot-weather-widget/images/hotel3.jpg',
         address: 'CITYMAX HOTEL RAS AL KHAIMAH',
         phone: 97172073700,
         weather: {
@@ -49,7 +49,7 @@ export class HotWeatherWidgetApi {
         },
         social_info: {
           title: 'Instagram',
-          img: '../../../../assets/hot-weather-widget/images/hotel3-s.jpg',
+          img: 'assets/hot-weather-widget/images/hotel3-s.jpg',
           followers: 2362,
           following: 74
         }

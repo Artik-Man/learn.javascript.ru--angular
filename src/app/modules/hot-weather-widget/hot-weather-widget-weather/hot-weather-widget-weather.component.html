@@ -1,7 +1,7 @@
 <div class="weather-widget">
-  <h5>{{currentHotel?.weather?.title}}</h5>
+  <h5>{{currentWeather?.title}}</h5>
   <div class="w-line"> </div>
-  <span [class]="currentHotel?.weather?.icon"> </span>
-  <h2>{{currentHotel?.weather?.temperature}}<sup class="degree">°</sup></h2>
-  <h6>Water {{currentHotel?.weather?.water}}<sup class="degree">°</sup></h6>
+  <span [class]="currentWeather?.icon" [attr.aria-label]="currentWeather?.title"> </span>
+  <h2>{{currentWeather?.temperature}}<sup class="degree">°</sup></h2>
+  <h6>Water {{currentWeather?.water}}<sup class="degree">°</sup></h6>
 </div>

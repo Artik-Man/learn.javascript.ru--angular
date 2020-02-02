@@ -1,17 +1,17 @@
 <div class="social">
   <div class="title">
-    <h4>{{currentHotel?.social_info?.title}}</h4>
-    <div class="w-line"> </div>
-    <img [src]="currentHotel?.social_info?.img" [alt]="currentHotel?.address" class="img-responsive">
+    <h4>{{social?.title}}</h4>
+    <div class="w-line"></div>
+    <img [src]="social?.img" alt="Social image" class="img-responsive">
   </div>
   <div class="stats">
     <ul>
       <li>
-        <h3>{{currentHotel?.social_info?.followers}}</h3>
+        <h3>{{social?.followers}}</h3>
         <p>Followers</p>
       </li>
       <li>
-        <h3>{{currentHotel?.social_info?.following}}</h3>
+        <h3>{{social?.following}}</h3>
         <p>Following</p>
       </li>
     </ul>

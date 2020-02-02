@@ -28,17 +28,29 @@
     font-weight: 400;
   }
 
+  .degree {
+    vertical-align: top;
+  }
+
   .w-line {
     width: 100px;
     margin: .7em auto;
     border-bottom: 2px solid white;
   }
 
-  span.cloud {
-    background: url('../../../../assets/hot-weather-widget/images/cloudy.png') no-repeat;
+  .icon {
     width: 3.2em;
     height: 3.2em;
     display: inline-block;
     vertical-align: middle;
+    background-repeat: no-repeat;
+
+    &.cloud {
+      background-image: url('../../../../assets/hot-weather-widget/images/cloudy.png');
+    }
+
+    &.sunny {
+      background-image: url('../../../../assets/hot-weather-widget/images/sunny.png');
+    }
   }
 }

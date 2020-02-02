@@ -58,7 +58,7 @@ export class HotWeatherWidgetApiService {
         phone: 971042419500,
         weather: {
           title: 'Sunny',
-          icon: 'cloud',
+          icon: 'sunny',
           water: 26,
           temperature: 30
         },

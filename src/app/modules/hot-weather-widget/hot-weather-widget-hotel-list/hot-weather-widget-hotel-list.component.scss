@@ -62,10 +62,11 @@
 }
 
 .scroll-box {
-  height: 130px;
+  height: 140px;
   overflow-y: scroll;
   padding: 0 1em;
   scroll-snap-type: y mandatory;
+  scrollbar-color: #fda660 #f5f5f5;
 
   &::-webkit-scrollbar-track {
     background-color: #f0f0f0;
@@ -79,18 +80,24 @@
   &::-webkit-scrollbar-thumb {
     background-color: #fda660;
   }
+
 }
 
 .activity-item {
   padding: 1em 0;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   display: flex;
   width: 100%;
   justify-content: space-between;
   cursor: pointer;
 
+  &:focus {
+    animation: 250ms outline 700ms linear forwards;
+  }
+
   .activity-item-description {
     padding-right: 5px;
+
     h5 {
       color: black;
       font-size: 1em;
@@ -132,5 +139,14 @@
         object-fit: cover;
       }
     }
+  }
+}
+
+@keyframes outline {
+  from {
+    outline-color: #5fb3f9ff;
+  }
+  to {
+    outline-color: #5fb3f944;
   }
 }

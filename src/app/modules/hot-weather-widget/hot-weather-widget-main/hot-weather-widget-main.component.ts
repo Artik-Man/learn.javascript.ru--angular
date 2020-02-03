@@ -14,9 +14,11 @@ export class HotWeatherWidgetMainComponent implements OnInit {
   public currentHotel: Hotel = null;
 
   ngOnInit() {
-    HotWeatherWidgetApiService.getList().pipe(take(1)).subscribe(response => {
-      this.list = response;
-    });
+    HotWeatherWidgetApiService.getList()
+      .pipe(take(1))
+      .subscribe(response => {
+        this.list = response;
+      });
   }
 
   public select(hotel: Hotel) {

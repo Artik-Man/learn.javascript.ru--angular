@@ -13,7 +13,7 @@ export class HotWeatherWidgetHotelListComponent {
 
   @Input() set hotels(list: Hotel[]) {
     this.list = list;
-    if (list.length) {
+    if (list.length && !this.currentHotel) {
       this.select(list[0]);
     }
   }

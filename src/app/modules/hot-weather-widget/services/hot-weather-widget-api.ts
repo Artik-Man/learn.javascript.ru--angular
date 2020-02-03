@@ -41,7 +41,7 @@ export class HotWeatherWidgetApiService {
         phone: 97165197777,
         weather: {
           title: 'Cloudy',
-          icon: 'cloud',
+          icon: 'cloudy',
           water: 24,
           temperature: 35
         },
@@ -74,10 +74,10 @@ export class HotWeatherWidgetApiService {
         address: 'CITYMAX HOTEL RAS AL KHAIMAH',
         phone: 97172073700,
         weather: {
-          title: 'Cloudy',
-          icon: 'cloud',
-          water: 25,
-          temperature: 33
+          title: 'Stormy',
+          icon: 'stormy',
+          water: 22,
+          temperature: 24
         },
         social_info: {
           title: 'Instagram',

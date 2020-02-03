@@ -1,5 +1,5 @@
 <div class="hotel-list-main">
-  <div class="hero-picture">
+  <div class="hero-picture" *ngIf="currentHotel.img">
     <img [src]="currentHotel?.img" [alt]="currentHotel?.address">
   </div>
   <div>
@@ -16,8 +16,8 @@
       <div class="w-line"></div>
       <div class="activity_box">
         <div class="scroll-box">
-          <div class="activity-item" *ngFor="let hotel of list" (focus)="select(hotel)" role="button"
-               aria-pressed="false" tabindex="0">
+          <div class="activity-item" *ngFor="let hotel of list" (click)="select(hotel)" (keydown.enter)="select(hotel)"
+               role="button" aria-pressed="false" tabindex="0">
             <div class="activity-item-description">
               <h5>Resort</h5>
               <p>{{hotel.address}}</p>

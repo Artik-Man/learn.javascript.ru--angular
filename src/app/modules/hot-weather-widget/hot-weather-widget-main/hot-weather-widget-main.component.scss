@@ -8,6 +8,8 @@
   min-height: 100vh;
   overflow: hidden;
   padding: 16px;
+  opacity: 0;
+  animation: 250ms fadeIn linear 100ms forwards;
 }
 
 h1 {
@@ -60,5 +62,14 @@ a {
 
   &:hover {
     color: white;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -6,13 +6,15 @@ import { HotWeatherWidgetHotelListComponent } from './hot-weather-widget-main/ho
 import { HotWeatherWidgetWeatherComponent } from './hot-weather-widget-main/hot-weather-widget-weather/hot-weather-widget-weather.component';
 import { HotWeatherWidgetSocialComponent } from './hot-weather-widget-main/hot-weather-widget-social/hot-weather-widget-social.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { HotWeatherWidgetHotelItemComponent } from './hot-weather-widget-main/hot-weather-widget-hotel-list/hot-weather-widget-hotel-item/hot-weather-widget-hotel-item.component';
 
 @NgModule({
   declarations: [
     HotWeatherWidgetMainComponent,
     HotWeatherWidgetHotelListComponent,
     HotWeatherWidgetWeatherComponent,
-    HotWeatherWidgetSocialComponent
+    HotWeatherWidgetSocialComponent,
+    HotWeatherWidgetHotelItemComponent
   ],
   imports: [
     CommonModule,

@@ -4,30 +4,17 @@
   </div>
   <div>
     <div class="links-list">
-      <ul>
-        <li><a routerLink="/">Hotel</a></li>
-        <li><a routerLink="/">Fishing</a></li>
-        <li><a routerLink="/">Tours</a></li>
-        <li><a routerLink="/">Weather</a></li>
-      </ul>
+      <menu>
+<!--        <li *ngFor="let menuItem of currentHotel."><a>All</a></li>-->
+      </menu>
     </div>
     <section class="content">
       <h3>Righteous indignation & like</h3>
       <div class="w-line"></div>
       <div class="activity_box">
         <div class="scroll-box">
-          <div class="activity-item" *ngFor="let hotel of list" (click)="select(hotel)" (keydown.enter)="select(hotel)"
-               role="button" aria-pressed="false" tabindex="0">
-            <div class="activity-item-description">
-              <h5>Resort</h5>
-              <p>{{hotel.address}}</p>
-              <h6>Tel: <a href="tel:{{hotel.phone}}">{{hotel.phone | mask: '+000-000-00-00'}}</a></h6>
-            </div>
-            <ul class="activity-images">
-              <li><img [src]="hotel.img" [alt]="hotel.address"/></li>
-              <li><img [src]="hotel.social_info.img" [alt]="hotel.address"/></li>
-            </ul>
-          </div>
+          <app-hot-weather-widget-hotel-item *ngFor="let hotel of list" (click)="select(hotel)"
+                                             (keydown.enter)="select(hotel)" [hotel]="hotel"></app-hot-weather-widget-hotel-item>
         </div>
       </div>
     </section>

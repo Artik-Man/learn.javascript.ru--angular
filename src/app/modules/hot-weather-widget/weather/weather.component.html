@@ -1,9 +1,9 @@
-<div class="weather-widget" *ngIf="currentWeather">
-  <h5>{{currentWeather?.title}}</h5>
+<div class="weather-widget" *ngIf="weather">
+  <h5>{{weather?.title}}</h5>
   <div class="w-line"></div>
-  <svg class="icon" [attr.aria-label]="currentWeather?.title" viewBox="0 0 64 64">
-    <use [attr.xlink:href]="'./assets/hot-weather-widget/icons.svg#'+currentWeather.icon"></use>
+  <svg class="icon" [attr.aria-label]="weather?.title" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <use [attr.xlink:href]="'./assets/hot-weather-widget/icons.svg#'+weather.icon"></use>
   </svg>
-  <h2>{{currentWeather?.temperature}}<sup class="degree">°</sup></h2>
-  <h6>Water {{currentWeather?.water}}<sup class="degree">°</sup></h6>
+  <h2>{{weather?.temperature}}<sup class="degree">°</sup></h2>
+  <h6>Water {{weather?.water}}<sup class="degree">°</sup></h6>
 </div>

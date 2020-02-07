@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Hotel} from '../services/hot-weather-widget-api';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Hotel } from '../services/hot-weather-widget-api';
 
 @Component({
   selector: 'app-hot-weather-widget-weather',
@@ -8,10 +8,5 @@ import {Hotel} from '../services/hot-weather-widget-api';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherComponent {
-  public currentWeather: Hotel['weather'];
-
-  @Input() set weather(hotel: Hotel['weather']) {
-    this.currentWeather = hotel;
-  }
-
+  @Input() weather: Hotel['weather'];
 }

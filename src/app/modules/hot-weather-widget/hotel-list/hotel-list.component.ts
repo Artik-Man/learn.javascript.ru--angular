@@ -1,20 +1,29 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {Hotel} from '../../services/hot-weather-widget-api';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Hotel } from '../services/hot-weather-widget-api';
 
 @Component({
   selector: 'app-hot-weather-widget-hotel-list',
-  templateUrl: './hot-weather-widget-hotel-list.component.html',
-  styleUrls: ['./hot-weather-widget-hotel-list.component.scss'],
+  templateUrl: './hotel-list.component.html',
+  styleUrls: ['./hotel-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HotWeatherWidgetHotelListComponent {
+export class HotelListComponent {
+  public filter = '';
   public currentHotel: Hotel = null;
+  public tags = new Set();
   public list: Hotel[] = [];
 
   @Input() set hotels(list: Hotel[]) {
     this.list = list;
     if (list.length && !this.currentHotel) {
       this.select(list[0]);
+
+      this.tags.clear();
+      this.list.forEach(hotel => {
+        hotel.tags.forEach(tag => {
+          this.tags.add(tag);
+        });
+      });
     }
   }
 

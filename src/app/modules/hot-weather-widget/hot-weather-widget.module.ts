@@ -1,25 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HotWeatherWidgetMainComponent } from './hot-weather-widget-main/hot-weather-widget-main.component';
+import { HotWeatherWidgetComponent } from './hot-weather-widget.component';
 import { RouterModule } from '@angular/router';
-import { HotWeatherWidgetHotelListComponent } from './hot-weather-widget-main/hot-weather-widget-hotel-list/hot-weather-widget-hotel-list.component';
-import { HotWeatherWidgetWeatherComponent } from './hot-weather-widget-main/hot-weather-widget-weather/hot-weather-widget-weather.component';
-import { HotWeatherWidgetSocialComponent } from './hot-weather-widget-main/hot-weather-widget-social/hot-weather-widget-social.component';
+import { HotelListComponent } from './hotel-list/hotel-list.component';
+import { WeatherComponent } from './weather/weather.component';
+import { SocialComponent } from './social/social.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { HotWeatherWidgetHotelItemComponent } from './hot-weather-widget-main/hot-weather-widget-hotel-list/hot-weather-widget-hotel-item/hot-weather-widget-hotel-item.component';
+import { HotelListFilterPipe } from './pipes/hotel-list-filter';
+import { HotelComponent } from './hotel-list/hotel/hotel.component';
+import { PhonePipe } from './pipes/phone';
 
 @NgModule({
   declarations: [
-    HotWeatherWidgetMainComponent,
-    HotWeatherWidgetHotelListComponent,
-    HotWeatherWidgetWeatherComponent,
-    HotWeatherWidgetSocialComponent,
-    HotWeatherWidgetHotelItemComponent
+    HotWeatherWidgetComponent,
+    HotelListComponent,
+    WeatherComponent,
+    SocialComponent,
+    HotelComponent,
+    HotelListFilterPipe,
+    PhonePipe
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: HotWeatherWidgetMainComponent },
+      { path: '', component: HotWeatherWidgetComponent },
       { path: '**', redirectTo: '' }
     ]),
     NgxMaskModule.forRoot({})

@@ -1,8 +1,7 @@
 <div class="activity-item" role="button" aria-pressed="false" tabindex="0">
   <div class="activity-item-description">
-    <h5>Resort</h5>
-    <p>{{hotel.address}}</p>
-    <h6>Tel: <a href="tel:{{hotel.phone}}">{{hotel.phone | mask: '+000-000-00-00'}}</a></h6>
+    <h5>{{hotel.address}}</h5>
+    <h6>Tel: <a href="tel:{{hotel.phone}}">{{hotel.phone | phone}}</a></h6>
   </div>
   <ul class="activity-images">
     <li><img [src]="hotel.img" [alt]="hotel.address"/></li>

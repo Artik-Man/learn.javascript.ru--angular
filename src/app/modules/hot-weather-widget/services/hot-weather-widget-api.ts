@@ -39,6 +39,7 @@ export class HotWeatherWidgetApiService {
         img: 'assets/hot-weather-widget/images/hotel1.jpg',
         address: 'GOLDEN TULIP SHARJAH HOTEL',
         phone: 97165197777,
+        tags: ['5 Stars', 'Pool', 'Own beach'],
         weather: {
           title: 'Cloudy',
           icon: 'cloudy',
@@ -56,6 +57,7 @@ export class HotWeatherWidgetApiService {
         img: 'assets/hot-weather-widget/images/hotel2.jpg',
         address: 'ROVE AT THE PARKS',
         phone: 971042419500,
+        tags: ['4 Stars', 'Downtown', 'Own beach'],
         weather: {
           title: 'Sunny',
           icon: 'sunny',
@@ -73,6 +75,7 @@ export class HotWeatherWidgetApiService {
         img: 'assets/hot-weather-widget/images/hotel3.jpg',
         address: 'CITYMAX HOTEL RAS AL KHAIMAH',
         phone: 97172073700,
+        tags: ['5 Stars', 'Downtown', 'Interior Design'],
         weather: {
           title: 'Stormy',
           icon: 'stormy',
@@ -85,7 +88,26 @@ export class HotWeatherWidgetApiService {
           followers: 2362,
           following: 74
         }
+      },
+      {
+        img: 'assets/hot-weather-widget/images/hotel4.jpg',
+        address: 'DOUBLE TREE BY HILTON',
+        phone: 97172260666,
+        tags: ['4 Stars', 'Pool', 'Interior Design'],
+        weather: {
+          title: 'Sunny',
+          icon: 'sunny',
+          water: 26,
+          temperature: 33
+        },
+        social_info: {
+          title: 'Instagram',
+          img: 'assets/hot-weather-widget/images/hotel4-s.jpg',
+          followers: 4532,
+          following: 975
+        }
       }
+
     ];
 
     return of(data);
@@ -96,6 +118,7 @@ export interface Hotel {
   img: string;
   address: string;
   phone: number;
+  tags: string[];
   weather: {
     title: string;
     icon: string;

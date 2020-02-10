@@ -4,7 +4,18 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'phone'
 })
 export class PhonePipe implements PipeTransform {
-  transform(filter: number): string {
-    return (filter + '').replace(/(\d{3})(\d{3})(\d{2})(\d+)/, `+$1-$2-$3-$4`);
+  // mask: +000-000-000-00
+  transform(filter: number, mask: string): string {
+    const reg = (filter + '').replace(/\d/g, '(\\d)');
+    let replacer = '';
+    let i = 0;
+    mask.split('').forEach((s) => {
+      if (s === '0') {
+        replacer += `$${++i}`;
+      } else {
+        replacer += s;
+      }
+    });
+    return (filter + '').replace(new RegExp(reg), replacer);
   }
 }

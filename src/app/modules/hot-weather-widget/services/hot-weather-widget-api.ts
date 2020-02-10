@@ -56,7 +56,7 @@ export class HotWeatherWidgetApiService {
       {
         img: 'assets/hot-weather-widget/images/hotel2.jpg',
         address: 'ROVE AT THE PARKS',
-        phone: 971042419500,
+        phone: 97104241950,
         tags: ['4 Stars', 'Downtown', 'Own beach'],
         weather: {
           title: 'Sunny',

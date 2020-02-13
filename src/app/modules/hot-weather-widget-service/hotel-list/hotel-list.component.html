@@ -1,0 +1,29 @@
+<div class="hotel-list-main">
+  <div class="hero-picture" *ngIf="currentHotel?.img">
+    <img [src]="currentHotel?.img" [alt]="currentHotel?.address">
+  </div>
+  <div>
+    <div class="links-list">
+      <menu>
+        <li>
+          <button (click)="filter=''">All</button>
+        </li>
+        <li *ngFor="let tag of tags">
+          <button (click)="filter=tag">{{tag}}</button>
+        </li>
+      </menu>
+    </div>
+    <section class="content">
+      <h3>Righteous indignation & like</h3>
+      <div class="w-line"></div>
+      <div class="activity_box">
+        <div class="scroll-box">
+          <app-hot-weather-widget-hotel-item *ngFor="let hotel of list | async | hotelListFilter:filter"
+                                             (click)="select(hotel)"
+                                             (keydown.enter)="select(hotel)"
+                                             [hotel]="hotel"></app-hot-weather-widget-hotel-item>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,700|Roboto:100,300,400,500,700,900&display=swap');
+
+:host {
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+  background: #313144;
+  display: block;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 16px;
+  opacity: 0;
+  animation: 250ms fadeIn linear 100ms forwards;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  margin: 3em 0 2em;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+}
+
+.grid-box {
+  display: grid;
+  grid-template-areas: "list" "weather" "social";
+  grid-template-columns: 1fr;
+  grid-gap: 24px;
+  max-width: 580px;
+  margin: 0 auto;
+
+  @media (min-width: 500px) {
+    grid-template-areas: "list weather" "list social";
+    grid-template-columns: 6fr 4fr;
+  }
+}
+
+app-hot-weather-widget-hotel-list {
+  grid-area: list;
+}
+
+app-hot-weather-widget-weather {
+  grid-area: weather;
+}
+
+app-hot-weather-widget-social {
+  grid-area: social;
+}
+
+.copy-right {
+  text-align: center;
+  font-size: 1em;
+  color: white;
+  line-height: 1.5;
+  margin-top: 120px;
+}
+
+a {
+  color: #fd7b87;
+  text-decoration: none;
+  transition: color 250ms linear;
+
+  &:hover {
+    color: white;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

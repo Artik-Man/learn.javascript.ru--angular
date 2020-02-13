@@ -6,12 +6,12 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: 'hot-weather-widget',
-    loadChildren: () => import('./modules/hot-weather-widget/hot-weather-widget.module').then(m => m.HotWeatherWidgetModule),
+    path: '1-hot-weather-widget',
+    loadChildren: () => import('./modules/1-hot-weather-widget/hot-weather-widget.module').then(m => m.HotWeatherWidgetModule),
   },
   {
-    path: 'hot-weather-widget-service',
-    loadChildren: () => import('./modules/hot-weather-widget-service/hot-weather-widget.module').then(m => m.HotWeatherWidgetServiceModule),
+    path: '2-hot-weather-widget',
+    loadChildren: () => import('./modules/2-hot-weather-widget/hot-weather-widget.module').then(m => m.HotWeatherWidgetModule),
   },
   { path: '**', redirectTo: '' }
 ];

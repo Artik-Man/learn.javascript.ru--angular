@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Hotel, HotWeatherWidgetApiService } from './services/hot-weather-widget-api';
+import { Hotel, HotWeatherWidgetApiService } from '../shared/services/hot-weather-widget-api';
 import { take } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 

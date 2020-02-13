@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor() {
-    console.log('AppComponent');
+  constructor(@Inject('environment') private env: { production: boolean }) {
+    console.log('Application started:', (this.env.production ? 'production' : 'development') + ' mode');
   }
 }

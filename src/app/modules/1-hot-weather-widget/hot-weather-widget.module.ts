@@ -5,9 +5,8 @@ import { RouterModule } from '@angular/router';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { WeatherComponent } from './weather/weather.component';
 import { SocialComponent } from './social/social.component';
-import { HotelListFilterPipe } from './pipes/hotel-list-filter';
 import { HotelComponent } from './hotel-list/hotel/hotel.component';
-import { PhonePipe } from './pipes/phone';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +15,10 @@ import { PhonePipe } from './pipes/phone';
     WeatherComponent,
     SocialComponent,
     HotelComponent,
-    HotelListFilterPipe,
-    PhonePipe
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([
       { path: '', component: HotWeatherWidgetComponent },
       { path: '**', redirectTo: '' }
@@ -29,4 +27,7 @@ import { PhonePipe } from './pipes/phone';
   exports: [RouterModule]
 })
 export class HotWeatherWidgetModule {
+  constructor() {
+    console.log('1. HotWeatherWidgetModule');
+  }
 }

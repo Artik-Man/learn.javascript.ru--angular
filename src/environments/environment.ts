@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: {
-    data: '/assets/hot-weather-widget/data.json'
+    data: 'assets/hot-weather-widget/data.json'
   }
 };
 

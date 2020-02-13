@@ -4,6 +4,7 @@ import { HotelListFilterPipe } from './pipes/hotel-list-filter';
 import { PhonePipe } from './pipes/phone';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
+import { HTTPInterceptor } from './http.interceptor';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ApiService } from './services/api.service';
     HttpClientModule
   ],
   providers: [
+    HTTPInterceptor,
     ApiService
   ],
   exports: [

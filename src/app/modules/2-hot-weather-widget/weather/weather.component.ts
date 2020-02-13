@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { StateService } from '../services/state.service';
 import { Observable } from 'rxjs';
-import { Hotel } from '../../shared/services/hot-weather-widget-api';
+import { Hotel } from '../../shared/services/api.service';
 
 @Component({
   selector: 'app-hot-weather-widget-weather',

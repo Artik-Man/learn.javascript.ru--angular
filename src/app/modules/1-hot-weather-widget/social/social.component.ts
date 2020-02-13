@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Hotel } from '../../shared/services/hot-weather-widget-api';
+import { Hotel } from '../../shared/services/api.service';
 
 @Component({
   selector: 'app-hot-weather-widget-social',

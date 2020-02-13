@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Hotel, HotWeatherWidgetApiService } from '../shared/services/hot-weather-widget-api';
+import { Hotel, ApiService } from '../shared/services/api.service';
 import { take } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 
@@ -15,12 +15,14 @@ export class HotWeatherWidgetComponent implements OnInit {
   public currentHotel: Hotel = null;
   public title = 'Hot Weather Widget';
 
-  constructor(private titleService: Title) {
+  constructor(
+    private titleService: Title,
+    private api: ApiService) {
     this.titleService.setTitle(this.title);
   }
 
   ngOnInit() {
-    HotWeatherWidgetApiService.getList()
+    this.api.getList()
       .pipe(take(1))
       .subscribe(response => {
         this.list = response;

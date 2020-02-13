@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-import { Hotel } from '../../shared/services/hot-weather-widget-api';
+import { Hotel } from '../../shared/services/api.service';
 
 @Injectable()
 export class StateService {

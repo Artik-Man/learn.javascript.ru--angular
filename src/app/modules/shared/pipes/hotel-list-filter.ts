@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Hotel } from '../services/hot-weather-widget-api';
+import { Hotel } from '../services/api.service';
 
 @Pipe({
   name: 'hotelListFilter'

@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 <div class="grid-box">
-  <app-hot-weather-widget-hotel-list [hotels]="list" (selectHotel)="select($event)"></app-hot-weather-widget-hotel-list>
+  <app-hot-weather-widget-hotel-list [hotels]="list$ | async" (selectHotel)="select($event)"></app-hot-weather-widget-hotel-list>
   <app-hot-weather-widget-weather [weather]="currentHotel?.weather"></app-hot-weather-widget-weather>
   <app-hot-weather-widget-social [social]="currentHotel?.social_info"></app-hot-weather-widget-social>
 </div>

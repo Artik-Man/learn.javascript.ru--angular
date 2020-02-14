@@ -1,5 +1,5 @@
 <div class="hotel-list-main">
-  <div class="hero-picture" *ngIf="currentHotel.img">
+  <div class="hero-picture" *ngIf="currentHotel?.img">
     <img [src]="currentHotel?.img" [alt]="currentHotel?.address">
   </div>
   <div>

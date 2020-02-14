@@ -14,16 +14,18 @@ export class HotelListComponent {
   public list: Hotel[] = [];
 
   @Input() set hotels(list: Hotel[]) {
-    this.list = list;
-    if (list.length && !this.currentHotel) {
-      this.select(list[0]);
+    if (list) {
+      this.list = list;
+      if (list.length && !this.currentHotel) {
+        this.select(list[0]);
 
-      this.tags.clear();
-      this.list.forEach(hotel => {
-        hotel.tags.forEach(tag => {
-          this.tags.add(tag);
+        this.tags.clear();
+        this.list.forEach(hotel => {
+          hotel.tags.forEach(tag => {
+            this.tags.add(tag);
+          });
         });
-      });
+      }
     }
   }
 

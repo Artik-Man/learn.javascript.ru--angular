@@ -10,10 +10,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class HTTPInterceptor implements HttpInterceptor {
 
-  constructor() {}
-
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(request.url);
+    if (request.url.includes('api/data')) {
+      const clone = request.clone({ url: 'assets/hot-weather-widget/data.json' });
+      return next.handle(clone);
+    }
     return next.handle(request);
   }
 }

@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>GitHub Project search</h2>
+  <mat-form-field appearance="standard" color="primary" class="search-input">
+    <mat-label>Type something here...</mat-label>
+    <input matInput autocomplete="off" [formControl]="search" autofocus>
+    <button mat-icon-button matSuffix (click)="clear()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <ng-container *ngIf="repositories$ | async as repositories">
+    <ng-container *ngIf="repositories.length; else empty">
+      <mat-card *ngFor="let rep of repositories" class="card">
+        <div class="content">
+          <img class="avatar" [src]="rep.owner.avatar_url" [alt]="rep.owner.login" width="200" height="200">
+          <div class="body">
+            <mat-card-header>
+              <mat-card-title>{{rep.name}}</mat-card-title>
+              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                {{rep.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary">LIKE</button>
+              <button mat-raised-button color="accent">SHARE</button>
+              <button mat-raised-button color="warn">DELETE</button>
+            </mat-card-actions>
+          </div>
+
+        </div>
+      </mat-card>
+      <mat-paginator [length]="total" [pageSize]="30" (page)="setPage($event)"></mat-paginator>
+    </ng-container>
+  </ng-container>
+  <ng-template #empty>Nothing found</ng-template>
+
+</div>

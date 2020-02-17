@@ -23,8 +23,7 @@ import { SharedModule } from '../shared/shared.module';
       { path: '', component: HotWeatherWidgetComponent },
       { path: '**', redirectTo: '' }
     ])
-  ],
-  exports: [RouterModule]
+  ]
 })
 export class HotWeatherWidgetModule {
   constructor() {

@@ -27,8 +27,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     StateService
-  ],
-  exports: [RouterModule]
+  ]
 })
 export class HotWeatherWidgetModule {
   constructor() {

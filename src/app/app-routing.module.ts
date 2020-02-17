@@ -13,6 +13,10 @@ const routes: Routes = [
     path: '2-hot-weather-widget',
     loadChildren: () => import('./modules/2-hot-weather-widget/hot-weather-widget.module').then(m => m.HotWeatherWidgetModule),
   },
+  {
+    path: '3-github-search',
+    loadChildren: () => import('./modules/3-github-search/github-search.module').then(m => m.GithubSearchModule),
+  },
   { path: '**', redirectTo: '' }
 ];
 

@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+@include angular-material-theme(mat-light-theme(mat-palette($mat-deep-purple), mat-palette($mat-light-blue), mat-palette($mat-pink)));
+
+:host {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: mat-color($mat-grey, 100);
+  display: block;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  padding-top: 10vh;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.search-input {
+  margin: 0 auto 100px;
+  max-width: 600px;
+  width: 100%;
+  display: block !important;
+}
+
+.card {
+  margin-bottom: 36px;
+  .content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-gap: 16px;
+  }
+  .mat-card-actions{
+    margin: 24px 0 0 0;
+  }
+}

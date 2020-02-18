@@ -23,20 +23,45 @@ h2 {
 }
 
 .search-input {
+  position: relative;
   margin: 0 auto 100px;
   max-width: 600px;
   width: 100%;
-  display: block !important;
+
+  mat-form-field {
+    display: block !important;
+    width: 100%;
+  }
+
+  mat-progress-bar {
+    position: absolute;
+    bottom: 16px;
+  }
 }
 
 .card {
   margin-bottom: 36px;
+
   .content {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 100px 1fr;
     grid-gap: 16px;
   }
-  .mat-card-actions{
+
+  .avatar {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .mat-card-header-text {
+    margin: 0;
+  }
+
+  .mat-card-actions {
     margin: 24px 0 0 0;
   }
+}
+
+.text-center {
+  text-align: center;
 }

@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GithubApiService } from './services/github-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -25,10 +26,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCardModule,
     MatButtonModule,
     MatPaginatorModule,
+    MatProgressBarModule,
     RouterModule.forChild([
       { path: '', component: GithubSearchComponent },
       { path: '**', redirectTo: '' }
-    ]),
+    ])
   ],
   providers: [
     GithubApiService

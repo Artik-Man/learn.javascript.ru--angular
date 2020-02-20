@@ -47,7 +47,6 @@
 
       a {
         color: mat-color($mat-grey, 600);
-        vertical-align: middle;
       }
 
     }
@@ -55,7 +54,7 @@
     .star {
       display: inline-block;
       vertical-align: middle;
-      margin: -3px 3px 0 0;
+      margin: -4px 3px 0 0;
       opacity: .6;
     }
   }

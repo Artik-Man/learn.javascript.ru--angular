@@ -1,46 +1,17 @@
 <div class="container">
   <h2>GitHub Project search</h2>
 
-  <div class="search-input">
-    <mat-form-field appearance="standard" color="primary">
-      <mat-label>Type something here...</mat-label>
-      <input matInput autocomplete="off" [formControl]="search" autofocus>
-      <button mat-icon-button matSuffix (click)="clear()">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
+  <app-search-string
+    [loading]="loading"
+    (value)="search.next($event)"
+  ></app-search-string>
 
-    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
-  </div>
-  <ng-container *ngIf="repositories$ | async as repositories">
-
-    <ng-container *ngIf="!loading && repositories.length; else empty">
-      <mat-card *ngFor="let rep of repositories" class="card">
-        <div class="content">
-          <img class="avatar" [src]="rep.owner.avatar_url" [alt]="rep.owner.login" width="100" height="100">
-          <div class="body">
-            <mat-card-header>
-              <mat-card-title>{{rep.name}}</mat-card-title>
-              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>
-                {{rep.description}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <a [href]="rep.html_url" target="_blank" mat-button color="primary">Open in new tab</a>
-            </mat-card-actions>
-          </div>
-
-        </div>
-      </mat-card>
-      <mat-paginator [length]="total" [pageSize]="30" (page)="setPage($event)"></mat-paginator>
-    </ng-container>
-  </ng-container>
-
-  <ng-template #empty>
-    <div class="text-center">Nothing found</div>
-  </ng-template>
+  <app-repositories-list
+    [loading]="loading"
+    [total]="total"
+    [repositories$]="repositories$"
+    [value$]="search"
+    (page)="page.next($event)"
+  ></app-repositories-list>
 
 </div>

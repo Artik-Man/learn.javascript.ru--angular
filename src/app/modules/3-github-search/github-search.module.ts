@@ -12,10 +12,16 @@ import { GithubApiService } from './services/github-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SearchStringComponent } from './search-string/search-string.component';
+import { RepositoriesListComponent } from './repositories-list/repositories-list.component';
 
 
 @NgModule({
-  declarations: [GithubSearchComponent],
+  declarations: [
+    GithubSearchComponent,
+    SearchStringComponent,
+    RepositoriesListComponent
+  ],
   imports: [
     CommonModule,
     HttpClientModule,

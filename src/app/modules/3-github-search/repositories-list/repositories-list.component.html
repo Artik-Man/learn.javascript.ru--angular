@@ -1,0 +1,43 @@
+<ng-container *ngIf="repositories$ | async as repositories">
+
+  <ng-container *ngIf="!loading && repositories.length; else empty;">
+    <p>{{total | number}} repository results</p>
+    <mat-card *ngFor="let rep of repositories" class="card">
+      <div class="content">
+        <img class="avatar" [src]="rep.owner.avatar_url" [alt]="rep.owner.login">
+        <div class="body">
+          <mat-card-header>
+            <mat-card-title><a [href]="rep.html_url" target="_blank">{{rep.owner.login}}/{{rep.name}}</a>
+            </mat-card-title>
+            <mat-card-subtitle> {{rep.description}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <ul class="info">
+              <li *ngIf="rep.homepage"><a [href]="rep.homepage">{{rep.homepage}}</a></li>
+
+              <li *ngIf="rep.stargazers_count">
+                <svg aria-label="star" class="star" viewBox="0 0 14 16" width="14" height="16" role="img">
+                  <path fill-rule="evenodd"
+                        d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path>
+                </svg>
+                <a [href]="rep.stargazers_url">{{rep.stargazers_count | number}}</a>
+              </li>
+
+              <li *ngIf="rep.open_issues_count">Issues: <a [href]="rep.issues_url">{{rep.open_issues_count}}</a></li>
+
+              <li *ngIf="rep.license">License: <a [href]="rep.license?.url">{{rep.license?.name}}</a></li>
+            </ul>
+          </mat-card-content>
+        </div>
+
+      </div>
+    </mat-card>
+
+    <mat-paginator [length]="total" [pageSize]="30" (page)="next($event)"></mat-paginator>
+
+  </ng-container>
+</ng-container>
+
+<ng-template #empty>
+  <div class="text-center" *ngIf="(value$ | async) && !loading">Nothing found</div>
+</ng-template>

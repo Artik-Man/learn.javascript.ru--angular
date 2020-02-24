@@ -13,9 +13,11 @@ export class RepositoriesListComponent {
   @Input() value$: Observable<string>;
   @Input() loading: boolean;
   @Input() total: number;
-  @Output() page = new EventEmitter<number>();
+  @Input() page = 1;
+  @Output() pageChange = new EventEmitter<number>();
 
   public next(page: PageEvent): void {
-    this.page.next(page.pageIndex + 1);
+    console.log(page);
+    this.pageChange.next(page.pageIndex);
   }
 }

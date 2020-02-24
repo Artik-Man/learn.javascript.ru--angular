@@ -33,7 +33,7 @@
       </div>
     </mat-card>
 
-    <mat-paginator [length]="total" [pageSize]="30" (page)="next($event)"></mat-paginator>
+    <mat-paginator [length]="total" [pageSize]="30" (page)="next($event)" [pageIndex]="page"></mat-paginator>
 
   </ng-container>
 </ng-container>

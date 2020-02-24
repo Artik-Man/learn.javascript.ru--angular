@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { GithubApiService, Repository } from './services/github-api.service';
-import { debounceTime, map, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
 import { Observable, combineLatest, BehaviorSubject, of } from 'rxjs';
 
 @Component({
@@ -17,22 +17,36 @@ export class GithubSearchComponent {
 
   public repositories$: Observable<Repository[]> =
     combineLatest<Observable<string>, Observable<number>>(
-      this.search.asObservable(),
-      this.page.asObservable()
+      this.search.pipe(
+        map(x => x.trim()),
+        filter(x => x?.length > 3),
+        tap(() => {
+          this.page.next(1);
+        })
+      ),
+      this.page
     ).pipe(
-      debounceTime(300),
-      switchMap(([search, page]) => {
-        if (search?.length >= 3) {
-          this.loading = true;
-          return this.api.search(search, page)
-            .pipe(map(resp => {
+      debounceTime(500),
+      distinctUntilChanged(),
+      tap(() => {
+        this.loading = true;
+      }),
+      switchMap(([search, page]) =>
+        this.api.search(search, page)
+          .pipe(
+            map(resp => {
               this.total = resp.total_count;
-              this.loading = false;
               return resp.items;
-            }));
-        }
-        return of([]);
-      })
+            }),
+            tap(() => {
+              this.loading = false;
+            }),
+            catchError(() => {
+              this.loading = false;
+              return of([]);
+            })
+          )
+      )
     );
 
   constructor(private readonly api: GithubApiService) {

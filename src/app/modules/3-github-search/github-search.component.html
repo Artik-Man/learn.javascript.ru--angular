@@ -11,7 +11,8 @@
     [total]="total"
     [repositories$]="repositories$"
     [value$]="search"
-    (page)="page.next($event)"
+    [page]="page | async"
+    (pageChange)="page.next($event)"
   ></app-repositories-list>
 
 </div>

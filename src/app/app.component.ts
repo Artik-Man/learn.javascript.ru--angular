@@ -7,6 +7,6 @@ import { Component, Inject } from '@angular/core';
 })
 export class AppComponent {
   constructor(@Inject('environment') private env: { production: boolean }) {
-    console.log('Application started:', (this.env.production ? 'production' : 'development') + ' mode');
+    console.log(`Application started in ${this.env.production ? 'production' : 'development'} mode`);
   }
 }

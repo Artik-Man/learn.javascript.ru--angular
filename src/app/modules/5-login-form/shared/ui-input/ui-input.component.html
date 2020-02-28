@@ -1,0 +1,12 @@
+<input [type]="type"
+       [required]="required"
+       [autocomplete]="autocomplete?'on':'off'"
+       [id]="id"
+       [formControl]="control"
+       [class.active]="control.value.length"
+       [name]="label">
+
+<label [for]="id">
+  {{label}}
+  <span class="req" *ngIf="required">*</span>
+</label>

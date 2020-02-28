@@ -1,0 +1,17 @@
+<div class="form">
+
+  <ul class="tab-group">
+    <li class="tab" [class.active]="tab==='sign-up'">
+      <button (click)="tab='sign-up'">Sign Up</button>
+    </li>
+    <li class="tab" [class.active]="tab==='log-in'">
+      <button (click)="tab='log-in'">Log In</button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <app-sign-up *ngIf="tab==='sign-up'"></app-sign-up>
+    <app-log-in *ngIf="tab==='log-in'"></app-log-in>
+  </div>
+
+</div>

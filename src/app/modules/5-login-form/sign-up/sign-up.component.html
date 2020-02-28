@@ -1,0 +1,16 @@
+<h1>Sign Up for Free</h1>
+
+<form [formGroup]="form">
+
+  <div class="top-row">
+    <app-ui-input label="First Name" required="true" formControlName="firstName"></app-ui-input>
+    <app-ui-input label="Last Name" required="true" formControlName="lastName"></app-ui-input>
+  </div>
+
+  <app-ui-input label="Email Address" type="email" required="true" formControlName="email"></app-ui-input>
+
+  <app-ui-input label="Set A Password" type="password" required="true" formControlName="password"></app-ui-input>
+
+  <button type="submit" class="button button-block">Get Started</button>
+
+</form>

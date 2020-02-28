@@ -1,0 +1,19 @@
+<div class="social" *ngIf="currentHotel | async as hotel">
+  <div class="title">
+    <h4>{{hotel?.social_info?.title}}</h4>
+    <div class="w-line"></div>
+    <img [src]="hotel?.social_info?.img" alt="Social image" class="img-responsive">
+  </div>
+  <div class="stats">
+    <ul>
+      <li>
+        <h3>{{hotel?.social_info?.followers}}</h3>
+        <p>Followers</p>
+      </li>
+      <li>
+        <h3>{{hotel?.social_info?.following}}</h3>
+        <p>Following</p>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="activity-item" role="button" aria-pressed="false" tabindex="0">
+  <div class="activity-item-description">
+    <h5>{{hotel.address}}</h5>
+    <h6>Tel: <a href="tel:{{hotel.phone}}">{{hotel.phone | phone: '+000-000-000-00'}}</a></h6>
+  </div>
+  <ul class="activity-images">
+    <li><img [src]="hotel.img" [alt]="hotel.address"/></li>
+    <li><img [src]="hotel.social_info.img" [alt]="hotel.address"/></li>
+  </ul>
+</div>

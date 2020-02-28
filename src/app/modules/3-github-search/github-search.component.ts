@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { GithubApiService, Repository } from './services/github-api.service';
 import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
 import { Observable, combineLatest, BehaviorSubject, of } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   templateUrl: './github-search.component.html',
@@ -9,6 +10,8 @@ import { Observable, combineLatest, BehaviorSubject, of } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class GithubSearchComponent {
+  public title = 'Github Search';
+
   public total = 0;
   public loading = false;
 
@@ -49,6 +52,9 @@ export class GithubSearchComponent {
       )
     );
 
-  constructor(private readonly api: GithubApiService) {
+  constructor(
+    private readonly api: GithubApiService,
+    private titleService: Title) {
+    this.titleService.setTitle(this.title);
   }
 }

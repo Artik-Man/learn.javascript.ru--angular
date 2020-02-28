@@ -3,7 +3,7 @@
   margin-bottom: 40px;
   display: block;
 
-  label {
+  .label {
     display: block;
     position: absolute;
     -webkit-transform: translateY(6px);
@@ -43,7 +43,7 @@
 
     &.active,
     &:focus {
-      + label {
+      + .label {
         transform: translateY(50px);
         left: 2px;
         font-size: 14px;

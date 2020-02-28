@@ -1,12 +1,14 @@
-<input [type]="type"
-       [required]="required"
-       [autocomplete]="autocomplete?'on':'off'"
-       [id]="id"
-       [formControl]="control"
-       [class.active]="control.value.length"
-       [name]="label">
+<label>
+  <input
+    [type]="type"
+    [required]="required"
+    [autocomplete]="autocomplete?'on':'off'"
+    [formControl]="control"
+    [class.active]="control?.value?.length"
+    [name]="name">
 
-<label [for]="id">
-  {{label}}
-  <span class="req" *ngIf="required">*</span>
+  <span class="label">
+    <span>{{flyingLabel}}</span>
+    <span class="req" *ngIf="required">*</span>
+  </span>
 </label>

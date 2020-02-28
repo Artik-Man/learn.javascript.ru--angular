@@ -3,13 +3,13 @@
 <form [formGroup]="form">
 
   <div class="top-row">
-    <app-ui-input label="First Name" required="true" formControlName="firstName"></app-ui-input>
-    <app-ui-input label="Last Name" required="true" formControlName="lastName"></app-ui-input>
+    <app-ui-input flyingLabel="First Name" formControlName="firstName"></app-ui-input>
+    <app-ui-input flyingLabel="Last Name" formControlName="lastName"></app-ui-input>
   </div>
 
-  <app-ui-input label="Email Address" type="email" required="true" formControlName="email"></app-ui-input>
+  <app-ui-input flyingLabel="Email Address" type="email" formControlName="email"></app-ui-input>
 
-  <app-ui-input label="Set A Password" type="password" required="true" formControlName="password"></app-ui-input>
+  <app-ui-input flyingLabel="Set A Password" type="password" formControlName="password"></app-ui-input>
 
   <button type="submit" class="button button-block">Get Started</button>
 

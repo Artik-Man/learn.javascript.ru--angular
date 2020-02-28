@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Injector, Input, OnChanges, OnInit } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-ui-input',
@@ -13,23 +13,42 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
     }
   ]
 })
-export class UiInputComponent implements ControlValueAccessor {
+export class UiInputComponent implements OnChanges, OnInit, ControlValueAccessor {
 
-  @Input() label: string;
-
-  // Как получить required от FormControl, к которому принадлежит этот инпут?
-  @Input() required = false;
-
-  @Input() autocomplete = false;
+  @Input() flyingLabel = '';
+  @Input() required: boolean;
+  @Input() autocomplete: boolean;
   @Input() type: 'text' | 'email' | 'password' = 'text';
-  public id = Date.now() * Math.random();
-  public control = new FormControl('');
 
-  constructor() {
+  public control = new FormControl();
+  public name: string;
+
+  constructor(private injector: Injector) {
+  }
+
+  public ngOnInit(): void {
+    const ngControl = this.injector.get(NgControl);
+
+    setTimeout(() => {
+      this.control = ngControl.control as FormControl;
+      console.log(this);
+      this.required = hasRequiredField(this.control);
+      // setTimeout(() => {
+      //   this.ngControl.updateValueAndValidity();
+      // }, 100);
+    }, 0);
+
+  }
+
+  public ngOnChanges(): void {
+    // this.control.updateValueAndValidity();
+    this.required = this.required !== undefined;
+    this.autocomplete = this.autocomplete !== undefined;
+    this.name = this.generateName();
   }
 
   public registerOnChange(fn: (value: string) => void): void {
-    this.control.valueChanges.subscribe(fn);
+    this.control?.valueChanges.subscribe(fn);
   }
 
   public registerOnTouched(fn: any): void {
@@ -37,13 +56,27 @@ export class UiInputComponent implements ControlValueAccessor {
 
   public setDisabledState(isDisabled: boolean): void {
     if (isDisabled) {
-      this.control.disable();
+      this.control?.disable();
     } else {
-      this.control.enable();
+      this.control?.enable();
     }
   }
 
   public writeValue(obj: string): void {
-    this.control.setValue(obj);
+    this.control?.setValue(obj);
+  }
+
+  public generateName() {
+    return this.flyingLabel.toLowerCase().replace(/\s/, '');
   }
 }
+
+export const hasRequiredField = (abstractControl: AbstractControl): boolean => {
+  if (abstractControl?.validator) {
+    const validator = abstractControl.validator({} as AbstractControl);
+    if (validator && validator.required) {
+      return true;
+    }
+  }
+  return false;
+};

@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { StateService } from '../services/state.service';
 import { Observable, Subscription } from 'rxjs';
 import { Hotel } from '../../shared/services/api.service';
+import { Store } from '@ngrx/store';
+import { IRootState } from '../store';
+import { getHotelsPending } from '../store/action/state.actions';
 
 @Component({
   selector: 'app-hot-weather-widget-hotel-list',
@@ -9,26 +12,18 @@ import { Hotel } from '../../shared/services/api.service';
   styleUrls: ['./hotel-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HotelListComponent implements OnDestroy {
+export class HotelListComponent implements OnInit, OnDestroy {
   public filter = '';
   public currentHotel: Hotel = null;
   public tags = new Set();
   public list: Observable<Hotel[]>;
   private subscription: Subscription;
 
-  constructor(private stateService: StateService) {
-    this.list = this.stateService.hotelList.asObservable();
+  constructor(
+    private stateService: StateService,
+    private readonly store: Store<IRootState>
+  ) {
 
-    this.subscription = this.list.subscribe(list => {
-      if (!this.currentHotel && list.length) {
-        this.select(list[0]);
-      }
-      list.forEach(hotel => {
-        hotel.tags.forEach(tag => {
-          this.tags.add(tag);
-        });
-      });
-    });
   }
 
 
@@ -37,6 +32,16 @@ export class HotelListComponent implements OnDestroy {
     if (this.currentHotel) {
       this.stateService.currentHotel.next(this.currentHotel);
     }
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(getHotelsPending());
+    this.list = this.store.select('hotels');
+    this.subscription = this.list
+      .subscribe((hotels) => {
+        console.log(hotels);
+        this.select(hotels[0]);
+      });
   }
 
   ngOnDestroy(): void {

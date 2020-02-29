@@ -8,6 +8,13 @@ import { SocialComponent } from './social/social.component';
 import { HotelComponent } from './hotel-list/hotel/hotel.component';
 import { StateService } from './services/state.service';
 import { SharedModule } from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../../../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store';
+import { effects } from './store/effects';
+import { HotelsEffects } from './store/effects/state.effects';
 
 @NgModule({
   declarations: [
@@ -23,10 +30,17 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule.forChild([
       { path: '', component: HotWeatherWidgetComponent },
       { path: '**', redirectTo: '' }
-    ])
+    ]),
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: !environment.production,
+    }),
+    EffectsModule.forRoot(effects),
   ],
   providers: [
-    StateService
+    StateService,
+    HotelsEffects
   ]
 })
 export class HotWeatherWidgetModule {

@@ -11,4 +11,15 @@
     <span>{{flyingLabel}}</span>
     <span class="req" *ngIf="required">*</span>
   </span>
+
+  <span class="errors">
+    <span *ngFor="let e of control.errors | keyvalue">
+      {{
+      e.key === 'email' ? 'Invalid email address' :
+        e.value === true || e.value === false
+          ? ''
+          : e.value
+      }}
+    </span>
+  </span>
 </label>

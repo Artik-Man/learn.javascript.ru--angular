@@ -24,6 +24,21 @@
 
   }
 
+  .errors {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    color: tomato;
+    display: none;
+    flex-direction: column;
+    font-size: 14px;
+    padding-top: 8px;
+
+    > *:not(:first-child) {
+      display: none;
+    }
+  }
+
   input, textarea {
     font-size: 22px;
     display: block;
@@ -35,6 +50,14 @@
     color: #ffffff;
     border-radius: 0;
     transition: border-color .25s ease, box-shadow .25s ease;
+
+    &.ng-invalid.active:not(.ng-pristine) {
+      border-color: tomato !important;
+
+      ~ .errors {
+        display: flex;
+      }
+    }
 
     &:focus {
       outline: 0;

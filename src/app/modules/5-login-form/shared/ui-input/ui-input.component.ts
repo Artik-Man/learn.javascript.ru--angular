@@ -1,10 +1,11 @@
-import { Component, Injector, Input, OnChanges, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, Input, OnChanges, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-ui-input',
   templateUrl: './ui-input.component.html',
   styleUrls: ['./ui-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -31,17 +32,12 @@ export class UiInputComponent implements OnChanges, OnInit, ControlValueAccessor
 
     setTimeout(() => {
       this.control = ngControl.control as FormControl;
-      console.log(this);
-      this.required = hasRequiredField(this.control);
-      // setTimeout(() => {
-      //   this.ngControl.updateValueAndValidity();
-      // }, 100);
+      this.required = this.required || hasRequiredField(this.control);
     }, 0);
 
   }
 
   public ngOnChanges(): void {
-    // this.control.updateValueAndValidity();
     this.required = this.required !== undefined;
     this.autocomplete = this.autocomplete !== undefined;
     this.name = this.generateName();

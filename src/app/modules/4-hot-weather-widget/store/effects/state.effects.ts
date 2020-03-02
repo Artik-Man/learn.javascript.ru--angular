@@ -2,7 +2,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, mergeMap, switchMap } from 'rxjs/operators';
 import { ApiService, Hotel } from '../../../shared/services/api.service';
 import { EMPTY } from 'rxjs';
-import { getHotelPending, getHotelsPending, getHotelsSuccess, getHotelSuccess } from '../action/state.actions';
+import { getHotelPending, getHotelsPending, getHotelsSuccess, getHotelSuccess, selectHotel } from '../action/state.actions';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -14,7 +14,7 @@ export class HotelsEffects {
     switchMap(() => this.http.get<Hotel[]>(this.env.api.data)
       .pipe(
         mergeMap((hotels) => [
-          getHotelsSuccess({ hotels }),
+          getHotelsSuccess({ hotels })
         ]),
         catchError(() => {
           return EMPTY;
@@ -24,17 +24,17 @@ export class HotelsEffects {
   );
 
   // public getCurrentHotel$ = createEffect(() => this.actions$.pipe(
-  //   ofType(getHotelPending),
-  //   switchMap(() => this.getHotels$
-  //     .pipe(
-  //       mergeMap((hotel) => [
-  //         getHotelSuccess({ hotel }),
-  //       ]),
-  //       catchError(() => {
-  //         return EMPTY;
-  //       })
-  //     )
-  //   ))
+  //   ofType(selectHotel)
+  //   //   switchMap(() => this.getHotels$
+  //   //     .pipe(
+  //   //       mergeMap((hotel) => [
+  //   //         getHotelSuccess({ hotel }),
+  //   //       ]),
+  //   //       catchError(() => {
+  //   //         return EMPTY;
+  //   //       })
+  //   //     )
+  //   //   ))
   // );
 
   constructor(

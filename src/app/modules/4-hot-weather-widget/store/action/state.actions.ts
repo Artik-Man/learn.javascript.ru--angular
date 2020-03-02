@@ -1,14 +1,24 @@
 import { createAction, props } from '@ngrx/store';
 import { Hotel } from '../../../shared/services/api.service';
 
+export enum hotelActionType {
+  HOTELS_GET_PENDING = '[Hotels] Get hotels pending',
+  HOTELS_GET_SUCCESS = '[Hotels] Get hotels success',
+  SELECT_HOTEL = '[Hotels] Select hotel',
+}
+
 export const getHotelsPending = createAction(
-  '[Hotels] Get hotels pending'
+  hotelActionType.HOTELS_GET_PENDING
 );
 export const getHotelsSuccess = createAction(
-  '[Hotels] Get hotels success',
+  hotelActionType.HOTELS_GET_SUCCESS,
   props<{ hotels: Hotel[] }>()
 );
 
+export const selectHotel = createAction(
+  hotelActionType.SELECT_HOTEL,
+  props<{ hotel: Hotel }>()
+);
 
 export const getHotelPending = createAction(
   '[Hotels] Get hotel pending'
@@ -18,10 +28,4 @@ export const getHotelSuccess = createAction(
   props<{ hotel: Hotel }>()
 );
 
-export const setHotelPending = createAction(
-  '[Hotels] Set hotel pending'
-);
-export const setHotelSuccess = createAction(
-  '[Hotels] Set hotel success',
-  props()
-);
+

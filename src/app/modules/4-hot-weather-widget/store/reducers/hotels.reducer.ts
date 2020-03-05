@@ -19,10 +19,10 @@ const currentHotelReducerFn = createReducer(
 
 
 export const HotelsReducers = {
-  current: (state: Hotel | null, action: Action) => {
+  current: (state: Hotel, action: Action) => {
     return currentHotelReducerFn(state, action);
   },
-  hotels: (state: Hotel[] | null, action: Action) => {
+  hotels: (state: Hotel[], action: Action) => {
     return hotelsReducerFn(state, action);
   }
 };

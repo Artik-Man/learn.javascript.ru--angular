@@ -12,9 +12,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './store';
 import { effects } from './store/effects';
 import { HotelsEffects } from './store/effects/state.effects';
+import { HotelsReducers } from './store/reducers/hotels.reducer';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { HotelsEffects } from './store/effects/state.effects';
     HotelListComponent,
     WeatherComponent,
     SocialComponent,
-    HotelComponent,
+    HotelComponent
   ],
   imports: [
     CommonModule,
@@ -31,12 +31,12 @@ import { HotelsEffects } from './store/effects/state.effects';
       { path: '', component: HotWeatherWidgetComponent },
       { path: '**', redirectTo: '' }
     ]),
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(HotelsReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: !environment.production,
+      logOnly: !environment.production
     }),
-    EffectsModule.forRoot(effects),
+    EffectsModule.forRoot(effects)
   ],
   providers: [
     StateService,

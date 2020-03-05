@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Hotel } from '../../shared/services/api.service';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../store';
-import { getHotelsPending } from '../store/action/state.actions';
+import { HotelsActions } from '../store/action/state.actions';
 
 @Component({
   selector: 'app-hot-weather-widget-hotel-list',
@@ -30,16 +30,15 @@ export class HotelListComponent implements OnInit, OnDestroy {
   public select(hotel: Hotel) {
     this.currentHotel = hotel;
     if (this.currentHotel) {
-      this.stateService.currentHotel.next(this.currentHotel);
+      this.store.dispatch(HotelsActions.selectHotel({ current: hotel }));
     }
   }
 
   ngOnInit(): void {
-    this.store.dispatch(getHotelsPending());
+    this.store.dispatch(HotelsActions.getHotelsPending());
     this.list = this.store.select('hotels');
     this.subscription = this.list
       .subscribe((hotels) => {
-        console.log(hotels);
         this.select(hotels[0]);
       });
   }

@@ -1,17 +1,29 @@
 import { Hotel } from '../../../shared/services/api.service';
 import { Action, createReducer, on } from '@ngrx/store';
-import { getHotelsSuccess } from '../action/state.actions';
-
-export const initialState: Hotel[] = [];
+import { HotelsActions } from '../action/state.actions';
 
 const hotelsReducerFn = createReducer(
-  initialState,
-  on(getHotelsSuccess, (state, { hotels }) => {
+  [] as Hotel[],
+  on(HotelsActions.getHotelsSuccess, (state, { hotels }) => {
     return [...hotels];
   })
 );
 
-export function hotelsReducer(state: Hotel[] | undefined, action: Action) {
-  return hotelsReducerFn(state, action);
-}
+const currentHotelReducerFn = createReducer(
+  null as Hotel,
+  on(HotelsActions.selectHotel, (state, { current }) => {
+    console.log(state, current);
+    return current;
+  })
+);
+
+
+export const HotelsReducers = {
+  current: (state: Hotel | null, action: Action) => {
+    return currentHotelReducerFn(state, action);
+  },
+  hotels: (state: Hotel[] | null, action: Action) => {
+    return hotelsReducerFn(state, action);
+  }
+};
 
